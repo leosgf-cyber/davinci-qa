@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videographer Q&A — 10 Prompts</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0F1117;
+    --surface:  #1A1D27;
+    --border:   #2E3147;
+    --accent:   #7C6AF7;
+    --accent2:  #4FC3F7;
+    --text:     #E8EAF6;
+    --muted:    #8B91B0;
+    --gold:     #FFD54F;
+    --radius:   10px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1A0A3A 0%, #0F1117 60%);
+    border-bottom: 3px solid var(--accent);
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+  header .icon { font-size: 32px; margin-bottom: 8px; }
+  header h1 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  header .subtitle { color: var(--accent2); font-size: .95rem; margin-top: 4px; }
+  header .meta {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .stat {
+    display: flex; flex-direction: column; align-items: center;
+    background: rgba(124,106,247,.12);
+    border: 1px solid rgba(124,106,247,.3);
+    border-radius: 8px;
+    padding: 8px 18px;
+    min-width: 80px;
+  }
+  .stat-num { font-size: 1.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: .72rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: .5px; }
+
+  .controls {
+    max-width: 900px;
+    margin: 24px auto 0;
+    padding: 0 16px;
+  }
+
+  .search-wrap { position: relative; margin-bottom: 16px; }
+  .search-wrap svg {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); pointer-events: none;
+  }
+  #search {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: .95rem;
+    padding: 10px 12px 10px 40px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--muted); }
+
+  .filter-group {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .filter-label {
+    font-size: .75rem; color: var(--muted); text-transform: uppercase;
+    letter-spacing: .5px; white-space: nowrap; min-width: 80px;
+  }
+  .filter-btn {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    color: var(--muted); cursor: pointer; font-size: .8rem; padding: 5px 12px;
+    transition: all .18s; white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+
+  .results-bar { font-size: .82rem; color: var(--muted); margin: 10px 0 0; padding: 0 2px; }
+  .results-bar span { color: var(--accent2); font-weight: 600; }
+
+  .grid {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    transition: border-color .2s, transform .15s;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card.hidden { display: none; }
+
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .card-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .q-num { font-size: .75rem; font-weight: 700; color: var(--accent); font-family: monospace; letter-spacing: .5px; }
+  .cat-tag {
+    background: rgba(79,195,247,.1); border: 1px solid rgba(79,195,247,.25);
+    border-radius: 4px; color: var(--accent2); font-size: .72rem; font-weight: 600;
+    padding: 2px 7px; text-transform: uppercase; letter-spacing: .4px;
+  }
+  .type-tag {
+    border-radius: 4px; font-size: .7rem; font-weight: 600;
+    padding: 2px 7px; text-transform: uppercase; letter-spacing: .3px;
+    border: 1px solid;
+  }
+  .type-qa    { background: rgba(76,175,80,.1);  color: #4CAF50; border-color: #4CAF50; }
+  .type-script { background: rgba(255,193,7,.1);  color: var(--gold); border-color: var(--gold); }
+
+  .copy-btn {
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 4px;
+    font-size: .75rem; padding: 4px 8px; transition: all .18s; white-space: nowrap; flex-shrink: 0;
+  }
+  .copy-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+  .copy-btn.copied { border-color: #4CAF50; color: #4CAF50; }
+
+  .q-text { color: var(--text); font-size: .93rem; line-height: 1.55; }
+
+  .show-ans-btn {
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    color: var(--muted); cursor: pointer; display: flex; align-items: center; gap: 5px;
+    font-size: .78rem; padding: 5px 10px; transition: all .18s; width: fit-content;
+  }
+  .show-ans-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .show-ans-btn.open { border-color: var(--accent); color: var(--accent); }
+  .show-ans-btn.open .chevron { transform: rotate(180deg); }
+  .chevron { transition: transform .2s; }
+
+  .answer-box {
+    display: none;
+    background: rgba(124,106,247,.07); border: 1px solid rgba(124,106,247,.2);
+    border-radius: 8px; padding: 12px 14px; margin-top: 2px;
+  }
+  .answer-box.open { display: block; }
+  .answer-label {
+    font-size: .68rem; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px;
+  }
+  .answer-text { color: #c5c9e0; font-size: .88rem; line-height: 1.65; white-space: pre-line; }
+
+  .empty { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--muted); }
+  .empty .emoji { font-size: 2.5rem; margin-bottom: 12px; }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: .78rem;
+    margin-top: 40px; padding: 0 16px; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="icon">◈</div>
+  <h1>Videographer Q&amp;A</h1>
+  <div class="subtitle">10 prompts — real questions from real shooters</div>
+  <div class="meta">
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Prompts</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">Q&amp;A</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Script</span></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input id="search" type="text" placeholder="Search prompts…" oninput="applyFilters()">
+  </div>
+
+  <div class="filter-group">
+    <span class="filter-label">Type</span>
+    <button class="filter-btn type-btn active" data-type="all"    onclick="filterType(this)">All</button>
+    <button class="filter-btn type-btn"        data-type="qa"     onclick="filterType(this)">Q&amp;A</button>
+    <button class="filter-btn type-btn"        data-type="script" onclick="filterType(this)">Script / Output</button>
+  </div>
+
+  <div class="filter-group">
+    <span class="filter-label">Topic</span>
+    <button class="filter-btn cat-btn active" data-cat="all"          onclick="filterCat(this)">All</button>
+    <button class="filter-btn cat-btn" data-cat="Color Grading"       onclick="filterCat(this)">Color Grading</button>
+    <button class="filter-btn cat-btn" data-cat="Workflow"            onclick="filterCat(this)">Workflow</button>
+    <button class="filter-btn cat-btn" data-cat="Audio"               onclick="filterCat(this)">Audio</button>
+    <button class="filter-btn cat-btn" data-cat="Export"              onclick="filterCat(this)">Export</button>
+    <button class="filter-btn cat-btn" data-cat="Troubleshooting"     onclick="filterCat(this)">Troubleshooting</button>
+    <button class="filter-btn cat-btn" data-cat="Creative / Style"    onclick="filterCat(this)">Creative / Style</button>
+    <button class="filter-btn cat-btn" data-cat="Script Writing"      onclick="filterCat(this)">Script Writing</button>
+  </div>
+
+  <div class="results-bar">Showing <span id="visible-count">10</span> of 10 prompts</div>
+</div>
+
+<div class="grid" id="grid">
+
+<!-- Q01 -->
+<div class="card" data-cat="Color Grading" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q01</span>
+      <span class="cat-tag">Color Grading</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="My footage looks flat even after applying a LUT in DaVinci Resolve. What's usually going wrong — is it the node order, the color space, or something else?">My footage looks flat even after applying a LUT in DaVinci Resolve. What's usually going wrong — is it the node order, the color space, or something else?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">The most common culprit is a color space mismatch: if you're feeding log-encoded footage (like S-Log3 or BRAW) directly into a creative LUT that expects Rec.709 input, the LUT gets the wrong signal and the result looks washed out or flat. The fix is to apply a technical LUT (or a CST node — Color Space Transform) before your creative grade to convert the footage to Rec.709 first. A secondary issue is node order: your creative LUT should generally sit after your primary exposure/white balance corrections, not before. Finally, check that your timeline color space in Project Settings matches your monitor's output — if those are misaligned, the image can look off regardless of what you do in the nodes.</div>
+  </div>
+</div>
+
+<!-- Q02 -->
+<div class="card" data-cat="Script Writing" data-type="script">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q02</span>
+      <span class="cat-tag">Script Writing</span>
+      <span class="type-tag type-script">Script</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="Write a talking-head video script for a local coffee shop — casual and warm tone, under 90 seconds, hook in the first 5 words. Include VO cues and B-roll suggestions.">Write a talking-head video script for a local coffee shop — casual and warm tone, under 90 seconds, hook in the first 5 words. Include VO cues and B-roll suggestions.</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">[HOOK — ON CAMERA]
+"This place changed my mornings."
+
+[B-ROLL: slow pour of espresso, steam rising, hands wrapping around a cup]
+
+[VO / ON CAMERA — casual, direct]
+"I've been coming to [Shop Name] for three years now, and honestly — it's less about the coffee and more about the feeling. The second you walk in, something slows down."
+
+[B-ROLL: barista pulling a shot, chalk menu board, cozy corner seating]
+
+[VO]
+"They source everything locally, roast in small batches, and somehow still remember your order. It's the kind of place you tell your friends about — not because it's trendy, but because it's real."
+
+[ON CAMERA — closer, personal]
+"Come in once. You'll get it."
+
+[OUTRO B-ROLL: door closing, exterior shot, logo on cup]
+
+---
+Runtime estimate: ~75 seconds at natural speaking pace.
+Note: Adjust [Shop Name] and swap B-roll to match your actual shoot day list.</div>
+  </div>
+</div>
+
+<!-- Q03 -->
+<div class="card" data-cat="Audio" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q03</span>
+      <span class="cat-tag">Audio</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="I recorded with an external audio recorder and the sync drifts after a few minutes. What causes audio drift, and what's the cleanest fix inside DaVinci Resolve?">I recorded with an external audio recorder and the sync drifts after a few minutes. What causes audio drift, and what's the cleanest fix inside DaVinci Resolve?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">Audio drift happens because your camera and external recorder use independent internal clocks with slightly different sample rates — even a tiny mismatch (like 48000 Hz vs 47952 Hz) compounds over a long take and causes gradual desync. The cleanest fix in DaVinci Resolve is to use Auto Sync Audio in the Media Pool: select both the video clip and the external audio file, right-click → Auto Sync Audio → Based on Waveform. DaVinci analyzes the waveform of the camera's scratch audio and stretches/aligns the external file to match. For ongoing projects, the real prevention is using a timecode sync device (like a Tentacle Sync) or ensuring both devices share the same sample rate settings. If Auto Sync still shows small drift, you can manually use the Speed Change tool with a fractional percentage to correct the stretch.</div>
+  </div>
+</div>
+
+<!-- Q04 -->
+<div class="card" data-cat="Creative / Style" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q04</span>
+      <span class="cat-tag">Creative / Style</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="I want that warm, desaturated film look from A24 movies. What's the general grading approach in DaVinci Resolve, and what makes it look expensive instead of cheap?">I want that warm, desaturated film look from A24 movies. What's the general grading approach in DaVinci Resolve, and what makes it look expensive instead of cheap?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">The A24 look leans on lifted blacks, desaturated midtones, and warm highlights — not heavy filtering. Start with your primary correction (proper exposure, neutral white balance), then in the Curves panel, lift the blacks slightly so they never hit pure zero — this mimics film base fog and immediately removes the "digital" feel. Next, bring global saturation down to around 70–80% but push warmth selectively: use the Color Wheels to add a touch of orange/amber in the highlights and a hint of cool green or teal in the shadows (not blue — that's the cheap version). The key to making it look expensive is restraint: the grade should feel invisible. If someone notices your color grade before they notice the story, you've gone too far. Finish with a slight S-curve to add contrast without crushing the shadows, and consider adding a subtle Film Grain node (Effects Library → Resolve FX → Film Grain) to bring texture back after the grade softens things.</div>
+  </div>
+</div>
+
+<!-- Q05 -->
+<div class="card" data-cat="Workflow" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q05</span>
+      <span class="cat-tag">Workflow</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="What's the fastest way to organize a multi-camera wedding shoot in DaVinci Resolve before I start editing? I have 4 cameras and 8 hours of footage.">What's the fastest way to organize a multi-camera wedding shoot in DaVinci Resolve before I start editing? I have 4 cameras and 8 hours of footage.</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">Start in the Media Pool: create bins per camera (CAM A, CAM B, CAM C, CAM D) and import each camera's footage into its respective bin. Then select all clips across all bins, right-click → Create Multicam Clip Using → Timecode — if your cameras were synced with timecode, this is instant and perfect. If not, use Audio as the sync source (DaVinci's waveform sync works well even across 4 cameras). Once the Multicam Clip is created, drop it on a new timeline and use the Multicam viewer (Workspace → Show Viewer Mode → Multicam) to cut in real time while watching all angles simultaneously — click the angle you want to cut to, and DaVinci writes the edit. Before you start, also do a quick Smart Bin setup: flag any unusable clips (shaky, out of focus, blown exposure) with a Red flag so they're invisible during editing. With 8 hours of footage this upfront organization saves hours of scrubbing later.</div>
+  </div>
+</div>
+
+<!-- Q06 -->
+<div class="card" data-cat="Script Writing" data-type="script">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q06</span>
+      <span class="cat-tag">Script Writing</span>
+      <span class="type-tag type-script">Script</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="Give me a shot list and rough editing script for a 60-second brand video about a boutique fitness studio. Energy should feel motivating but not aggressive.">Give me a shot list and rough editing script for a 60-second brand video about a boutique fitness studio. Energy should feel motivating but not aggressive.</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">SHOT LIST:
+1. Exterior — studio facade, morning light, people walking in
+2. Detail — hands wrapping tape, lacing shoes, chalk on hands
+3. Wide — class in motion (slow shutter or 120fps for fluid movement)
+4. Medium — instructor adjusting form, genuine 1-on-1 interaction
+5. Close-up — faces: focused, not grimacing — calm intensity
+6. Detail — sweat on skin, weights in rack, equipment textures
+7. Reaction — smile, fist bump, end of class high energy
+8. Lifestyle — member leaving, earbuds in, confident walk
+
+---
+EDITING SCRIPT (60 sec):
+[0–5s]  Cold open — single slow-mo detail shot, no music yet. Cut hard to music on beat 1.
+[5–20s] Quick cut montage (1–1.5s per shot) through Shot List 1–4. Build energy with pacing.
+[20–35s] Slow down — hold on instructor interaction (3–4s). Let the human moment breathe.
+[35–50s] Pick back up — faces + reactions, cut on movement. Peak energy moment.
+[50–60s] Resolve to lifestyle shot, fade music slightly, logo/tagline title card.
+
+Music note: look for tracks in the 95–110 BPM range with a clear drop around 0:05 — builds without overwhelming.</div>
+  </div>
+</div>
+
+<!-- Q07 -->
+<div class="card" data-cat="Export" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q07</span>
+      <span class="cat-tag">Export</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="My YouTube exports look soft and over-compressed compared to the timeline. What render settings should I check in DaVinci Resolve, and is there a bitrate sweet spot?">My YouTube exports look soft and over-compressed compared to the timeline. What render settings should I check in DaVinci Resolve, and is there a bitrate sweet spot?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">YouTube re-encodes everything you upload, so your goal is to give it the cleanest possible source file to minimize generational quality loss. Use H.264 or H.265 at a high bitrate — for 1080p, aim for 20–40 Mbps; for 4K, 50–80 Mbps or higher. In DaVinci's Deliver page, set Format to MP4, Codec to H.264, and switch from Automatic to Restrict to with a manual bitrate value rather than using a quality slider — this gives you predictable file sizes. Also check that your Data Levels are set to Video Levels (not Full/Data), otherwise colors will look washed out or clipped after YouTube processes the file. One often-missed setting: make sure your timeline resolution and frame rate exactly match your export settings — any scaling adds softness. If you're still seeing compression artifacts in motion-heavy scenes, bump the bitrate further; YouTube's codec punishes complex motion more than static scenes.</div>
+  </div>
+</div>
+
+<!-- Q08 -->
+<div class="card" data-cat="Creative / Style" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q08</span>
+      <span class="cat-tag">Creative / Style</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="How do I pull off the teal-and-orange look without it feeling cheap or overdone? What's the node approach in DaVinci Resolve that keeps it subtle and intentional?">How do I pull off the teal-and-orange look without it feeling cheap or overdone? What's the node approach in DaVinci Resolve that keeps it subtle and intentional?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">The cheap version looks cheap because people apply it as a global hue shift — everything goes orange and teal regardless of context. The intentional approach is to separate skin tones from the environment. In your node graph, use a Qualifier node to isolate skin tones (use the Hue vs Saturation curve to protect the orange-red skin range), then apply your teal push to the shadows and background on a separate parallel node that doesn't affect that selection. In the Hue vs Hue curve, you can push cyans/greens toward true teal and then separately warm the reds/oranges slightly — this is more precise than a global saturation shift. The golden rule: the orange should only live in skin, warm metals, and direct light; the teal should live in shadows and cool ambient areas. If both colors are fighting for the same space in the frame, the grade looks artificial. Keep your saturation conservative (push Hue vs Sat only to around 1.1–1.2×, not 1.5×) and the result reads as color science, not a filter.</div>
+  </div>
+</div>
+
+<!-- Q09 -->
+<div class="card" data-cat="Troubleshooting" data-type="qa">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q09</span>
+      <span class="cat-tag">Troubleshooting</span>
+      <span class="type-tag type-qa">Q&amp;A</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="My playback is choppy even on simple timelines with no effects. I've got a decent machine — what's the first thing to check in DaVinci Resolve's performance settings?">My playback is choppy even on simple timelines with no effects. I've got a decent machine — what's the first thing to check in DaVinci Resolve's performance settings?</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">The single most common cause of unexpected choppiness on capable hardware is codec mismatch: if your footage is in a compressed, long-GOP codec like H.264 or H.265 (which is what most cameras shoot by default), DaVinci has to decode many frames simultaneously to reconstruct each frame you see — that's extremely CPU-intensive. The fix is to generate optimized media (right-click clips in Media Pool → Generate Optimized Media) which transcodes everything to an edit-friendly codec like DNxHR or ProRes that can be decoded frame-by-frame. This is the intended editorial workflow. If you don't want to wait for transcode, check Playback → Proxy Mode and set it to Half Resolution or Quarter Resolution as a temporary workaround. Beyond codec, also verify: GPU memory isn't being shared with another application, the Timeline Proxy Mode isn't accidentally enabled at a lower resolution, and that your scratch disk (where DaVinci writes cache) is on an SSD, not a spinning drive — a slow cache disk will bottleneck playback even if your CPU/GPU are fast.</div>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="card" data-cat="Script Writing" data-type="script">
+  <div class="card-header">
+    <div class="card-meta">
+      <span class="q-num">Q10</span>
+      <span class="cat-tag">Script Writing</span>
+      <span class="type-tag type-script">Script</span>
+    </div>
+    <button class="copy-btn" onclick="copyQ(this)" title="Copy prompt">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>
+  <p class="q-text" data-raw="Write a narrated documentary-style script for a 2-minute video about a family-run restaurant that's been open for 40 years. Nostalgic tone, no hard sell, focus on people.">Write a narrated documentary-style script for a 2-minute video about a family-run restaurant that's been open for 40 years. Nostalgic tone, no hard sell, focus on people.</p>
+  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    Show Answer
+  </button>
+  <div class="answer-box">
+    <div class="answer-label">Expected Answer</div>
+    <div class="answer-text">[OPEN — B-ROLL: hands kneading dough, steam rising from a pot, an old photograph on the wall]
+
+NARRATOR (VO):
+"There are places you go for the food. And then there are places you go because somewhere along the way, they became part of your story."
+
+[B-ROLL: exterior shot at golden hour, a sign slightly worn but proud, regulars walking in]
+
+NARRATOR (VO):
+"[Restaurant Name] has been on this corner for forty years. The recipes haven't changed. Neither has the family that makes them."
+
+[INTERVIEW — Owner or family member, seated, natural light]
+SUBJECT: "My father started this with nothing. A borrowed pan, a rented space, and the one dish he knew by heart. People kept coming back. So we stayed."
+
+[B-ROLL: kitchen in motion, close-ups on faces — cooks, servers, a table of regulars laughing]
+
+NARRATOR (VO):
+"Four decades. Two generations. And a dining room that's hosted first dates, last meals, and everything in between."
+
+[INTERVIEW — long-time regular]
+REGULAR: "It tastes exactly the same as it did when I was twelve. That's not an accident. That's care."
+
+[CLOSE — slow pull back from a lit candle on the table, the room full around it]
+
+NARRATOR (VO):
+"Some things are worth keeping exactly as they are."
+
+[TITLE CARD: Restaurant Name — Est. 19XX]
+
+---
+Runtime estimate: ~110–120 seconds at documentary pacing.
+Shoot tip: prioritize ambient light and unposed moments — the authenticity is the story.</div>
+  </div>
+</div>
+
+</div><!-- /grid -->
+
+<footer>
+  <p>10 prompts — videographer edition &nbsp;·&nbsp; DaVinci Resolve Q&amp;A Bank</p>
+</footer>
+
+<script>
+  let activeCat  = 'all';
+  let activeType = 'all';
+
+  function applyFilters() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    let visible = 0;
+    cards.forEach(c => {
+      const cat  = c.dataset.cat;
+      const type = c.dataset.type;
+      const text = c.querySelector('.q-text').textContent.toLowerCase();
+      const matchCat  = activeCat  === 'all' || cat  === activeCat;
+      const matchType = activeType === 'all' || type === activeType;
+      const matchQ    = !q || text.includes(q);
+      if (matchCat && matchType && matchQ) { c.classList.remove('hidden'); visible++; }
+      else c.classList.add('hidden');
+    });
+    document.getElementById('visible-count').textContent = visible;
+  }
+
+  function filterCat(btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    applyFilters();
+  }
+
+  function filterType(btn) {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeType = btn.dataset.type;
+    applyFilters();
+  }
+
+  function copyQ(btn) {
+    const text = btn.closest('.card').querySelector('.q-text').dataset.raw;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Copied`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy`;
+      }, 1800);
+    });
+  }
+
+  function toggleAnswer(btn) {
+    const box = btn.nextElementSibling;
+    const isOpen = box.classList.contains('open');
+    box.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    btn.childNodes[1].textContent = isOpen ? ' Show Answer' : ' Hide Answer';
+  }
+</script>
+</body>
+</html>
