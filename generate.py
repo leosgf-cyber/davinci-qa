@@ -201,6 +201,17 @@ THEMES TO COVER (use the Reddit context for timely subject ideas):
 
     return f"""{focus}
 
+QUESTION FRAMING — vary the format, don't always use "How do I" or "What is":
+- Scenario-based: "You're editing a 10-min travel doc and the client hates the color grade — how do you..."
+- Provocative opinion: "Is shooting in LOG actually worth the hassle for solo creators?"
+- Comparison with a twist: "Resolve's Fusion vs After Effects — which wins for someone who hates expressions?"
+- First-person / personal: "I've been using the same Dorian riff for 3 years. How do I break out?"
+- Challenge-format: "Name 3 cinematographers whose visual language would translate well to short-form vertical video."
+- 'Why does this work' framing: "Why does the chord change in 'Waters of March' feel so inevitable?"
+- Misconception-busting: "Everyone says you need a cine lens for filmmaking — when is a photography lens actually better?"
+- Constraint-based: "How would you shoot a full wedding recap video with only a 35mm prime?"
+Mix these freely across the batch. Not every prompt needs to be a question — some can be direct tasks or provocations.
+
 DIFFICULTY DISTRIBUTION: {DIFFICULTY_DIST}
 
 AVOID repeating questions similar to these recent ones:{recent_str}
