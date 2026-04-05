@@ -25,7 +25,7 @@ ARCHIVE.mkdir(exist_ok=True)
 # ── Config ────────────────────────────────────────────────────────────────────
 MODEL             = "claude-sonnet-4-6"
 MAX_HISTORY       = 500
-QUESTIONS_PER_DAY = 75
+QUESTIONS_PER_DAY = 90
 DIFFICULTY_DIST   = "30% Beginner, 50% Intermediate, 20% Advanced"
 
 # 4 categories with exact daily counts (total = 50)
@@ -35,6 +35,7 @@ CATEGORIES = {
     "C": {"label": "Creative",        "count": 18},
     "D": {"label": "Content",         "count": 17},
     "E": {"label": "Music Theory",    "count": 25},
+    "F": {"label": "Education",       "count": 15},
 }
 
 # Badge colors per type
@@ -44,6 +45,7 @@ TYPE_COLOR = {
     "Creative":        ("#2a1a2a", "#CE93D8"),   # purple
     "Content":         ("#1a2a1a", "#A5D6A7"),   # green
     "Music Theory":    ("#2a1a10", "#FFAB76"),   # orange
+    "Education":       ("#0a1a2a", "#64B5F6"),   # blue
 }
 
 LEO_PROFILE = """
@@ -178,6 +180,28 @@ Cazuza, Legião Urbana, Chico Buarque, Bill Evans, Stevie Wonder, Steely Dan, Ke
 
 QUESTION TYPES (mix): How-to, What is / explain, Why does this sound like X, How do I apply this, What's the difference between"""
 
+    elif cat_key == "F":
+        focus = f"""Generate exactly {count} prompts in the category "Education".
+These are practical prompts for someone who teaches Portuguese to Americans AND is a Brazilian living in the USA navigating bilingualism daily.
+
+PERSPECTIVES TO MIX (the user is both teacher AND learner):
+- As a Portuguese teacher for Americans: lesson ideas, explanations of tricky grammar, cultural nuances to teach, common mistakes American students make
+- As a bilingual Brazilian in the USA: strategies for maintaining native fluency, navigating code-switching, accent and pronunciation in both directions
+- Language acquisition theory applied to practice: how adults learn languages differently, immersion methods, spaced repetition, output vs input
+- PT-BR vs PT-PT vs US Spanish interference: what confuses American learners most, false cognates, slang that doesn't translate
+- Teaching culture alongside language: how to explain Brazilian culture to Americans through language (jeitinho, saudade, diminutives, the warmth in informal speech)
+- Content creation for language teaching: ideas for Instagram, YouTube, TikTok content in the bilingual educator niche
+- Personal identity and language: what it means to live between two languages, how language shapes identity for immigrants and expats
+- Practical tools: apps, methods, resources for teaching and learning both languages
+
+IMPORTANT: Ground prompts in specific, real scenarios — not abstract theory.
+Examples of good framings for this category:
+- "An American student keeps mixing 'por' and 'para' even after 3 months. What's your go-to explanation?"
+- "You're creating a 60-second Reel explaining why Brazilian Portuguese sounds so different from European Portuguese — what's your hook?"
+- "After 5 years in the US, you notice your Portuguese is changing. How do you protect your native fluency?"
+- "An American student asks why Brazilians say 'tô' instead of 'estou' — how do you explain reduction without killing their motivation?"
+"""
+
     else:  # D
         focus = f"""Generate exactly {count} prompts in the category "Content".
 These are content CREATION prompts — each one asks the model to produce a usable creative output.
@@ -308,7 +332,7 @@ def render_html(questions: list[dict], today: date) -> str:
     today_str = today.strftime("%B %d, %Y")
     today_iso = today.isoformat()
     total     = len(questions)
-    types     = ["Tech — Software", "Tech — Gear", "Creative", "Content", "Music Theory"]
+    types     = ["Tech — Software", "Tech — Gear", "Creative", "Content", "Music Theory", "Education"]
     diffs     = ["beginner", "intermediate", "advanced"]
 
     counts_diff = {d: sum(1 for q in questions if q["difficulty"] == d) for d in diffs}
@@ -444,6 +468,7 @@ def render_html(questions: list[dict], today: date) -> str:
     <div class="stat"><span class="stat-num">{counts_type.get("Creative",0)}</span><span class="stat-label">Creative</span></div>
     <div class="stat"><span class="stat-num">{counts_type.get("Content",0)}</span><span class="stat-label">Content</span></div>
     <div class="stat"><span class="stat-num">{counts_type.get("Music Theory",0)}</span><span class="stat-label">Music</span></div>
+    <div class="stat"><span class="stat-num">{counts_type.get("Education",0)}</span><span class="stat-label">Education</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["beginner"]}</span><span class="stat-label">Beginner</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["intermediate"]}</span><span class="stat-label">Intermed.</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["advanced"]}</span><span class="stat-label">Advanced</span></div>
@@ -478,7 +503,7 @@ def render_html(questions: list[dict], today: date) -> str:
   </div>
 </div>
 
-<footer>Generated on {today_iso} · Daily Audiovisual Q&amp;A · {total} prompts across 4 categories</footer>
+<footer>Generated on {today_iso} · Daily Audiovisual Q&amp;A · {total} prompts across 6 categories</footer>
 
 <script>
   let activeType = 'all';
