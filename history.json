@@ -198,5 +198,205 @@
   {
     "date": "2026-04-04",
     "question": "Generate a 7-post Instagram content plan for a food creator launching a new series on regional Italian cooking."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is the difference between a cut edit and a ripple edit in Adobe Premiere Pro, and when should I use each one?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do I set up a multicam sequence in Adobe Premiere Pro for a live music performance shot with four cameras?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Why does DaVinci Resolve's Fusion page feel so different from After Effects, and what mental model shift do I need to actually understand the node-based compositing workflow?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do I use CapCut's Speed Curve feature on mobile to create a smooth speed ramp effect that syncs with a music drop?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is the difference between color space transform nodes and LUT nodes in DaVinci Resolve's Color page, and which should I use when grading LOG footage?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do I use After Effects expressions to create a kinetic typography animation where letter spacing and scale react dynamically to the amplitude of a specific frequency band in a music track?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is the best practice for organizing a DaVinci Resolve project when editing a long-form documentary — how should I structure bins, timelines, and the Media Pool to stay sane across weeks of work?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What does bitrate actually control in a video export, and how do I choose the right bitrate setting when delivering files for YouTube, Instagram, and a client archive — all from the same Resolve Deliver page?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I just bought a Sony ZV-E10 II and I'm confused about the difference between Auto ISO and manual ISO. When should I let the camera choose, and when should I take control myself?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I shoot a lot of run-and-gun documentary video — interviews in chaotic locations, fast-moving subjects, no time to change lenses. I'm currently using a Sony A7 IV with a 24-70mm f/2.8 GM II. My footage is sharp but my kit feels heavy and slow for this style. Should I downsize to a lighter zoom or switch to a prime? What are my real options in 2026?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What are the best in-camera settings for shooting 4K video on the Fujifilm X-S20 to get the most usable, gradeable footage possible — specifically which Film Simulation, bit depth, and color profile should I use, and why?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I'm trying to understand depth of field in practical terms for portrait shooting. I keep hearing 'shoot wide open,' but my photos at f/1.8 look soft. What's actually going wrong, and what aperture should a beginner use for sharp portraits with a blurry background?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I'm editing RED V-RAPTOR 8K R3D files natively in DaVinci Resolve 20 on a Mac Studio with M3 Ultra (192GB unified memory). Playback is smooth on the timeline, but every time I switch to the Color page with a complex node tree — ACES transform, multiple power windows, Resolve Color Science Gen 5 — I get frame drops. Is this a GPU thread issue, a RAM bandwidth ceiling, or something I should address in Project Settings?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I need a fast, reliable external SSD setup for on-location video shoots — I'm recording 4K ProRes HQ from a Blackmagic Cinema Camera 6K and need to back up cards in the field without a laptop. What dedicated field backup hardware should I buy in 2026, and what's the realistic cost?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I'm shopping for a travel photography and video hybrid lens for my Canon EOS R5 II. My budget is around $800–$1,200. I mostly shoot street, architecture, and occasional portraits in cities. I want one lens I can travel with for weeks. Should I go with the RF 24-105mm f/4L, the Tamron 17-50mm f/4 Di III VXD, or something else? What are current prices looking like and is used a smart option here?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you start building a mood board for a short film or photo project — and what tools, sources, and habits actually make it useful rather than just a pretty Pinterest collection?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What should a photographer or filmmaker shoot in Lisbon to create visually original work — and how do you avoid the Alfama rooftop and tram clichés that flood every travel feed?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What are the most visually interesting things to shoot in a small American suburb or strip-mall town — and how do photographers like Stephen Shore and William Eggleston turn mundane Americana into compelling imagery?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you use music as a visual storytelling reference — meaning, how do you translate the mood, rhythm, and texture of a song into actual shooting and editing decisions for a photo or video project?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you study and begin replicating the visual language of Fernando Meirelles and César Charlone in 'City of God' — the handheld energy, crash-zoom grammar, and color contrast that made it so viscerally immediate?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What visual styles are dominating YouTube's cinematic vlog and short-doc space in 2025-2026 — and how do you technically execute the anamorphic lens flare, muted earth-tone grade, and slow-motion texture look that's everywhere right now?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How would you recreate the visual language of Walter Salles' 'Central do Brasil' — its warm, dusty northeastern Brazilian light, intimate handheld proximity, and documentary-fiction emotional honesty?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you create a VHS home-video aesthetic for a narrative or documentary short that feels emotionally true rather than just aesthetically retro — and what is the difference between nostalgia as decoration versus nostalgia as meaning?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you design a complete visual identity for a personal photography or video project inspired by the muted, melancholic palette of Wim Wenders' 'Paris, Texas' — and what does replicating that look require technically and emotionally?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you shoot and edit a short-form video essay or visual poem — under 3 minutes — that communicates the immigrant experience without narration, dialogue, or text overlays?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you use the muted, overcast, gray-green color palette of Scandinavian and Nordic cinema — Trier, Bergman, early Fincher — as a grading reference for a contemporary short film or documentary?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What does it mean to develop a 'lens grammar' — and how do directors like Paul Thomas Anderson use focal length not just for framing but as an expressive emotional language across an entire film?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you build a complete cinematographic approach for a documentary about the Brazilian expat experience in the U.S. — accounting for the visual tension between American visual culture and Brazilian sensory memory, and how do you make that tension visible on screen?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you study and replicate the visual grammar of Glauber Rocha's 'Black God, White Devil' — its stark, high-contrast sertão cinematography, hand-cranked rhythm, and political refusal of visual comfort — for a contemporary short or video art piece?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you design a color grading system for a narrative short that functions the way a musical key signature does — establishing an emotional tonal center and then using deliberate deviations from it to signal tension, revelation, or resolution?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you use expired film stock — physically or digitally simulated — as a narrative device rather than a stylistic choice, building its unpredictability, color drift, and degradation into the actual meaning of a photo series or short film?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you construct a visual essay film — in the tradition of Chris Marker, Agnès Varda, or Cao Guimarães — that uses archival footage, original material, and voice or text in a non-hierarchical relationship, where no single layer dominates the others?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How do you design a shooting strategy for a long-term personal documentary project — spanning years, not weeks — that maintains visual consistency, evolves intentionally as your aesthetic matures, and doesn't collapse under the weight of its own ambition?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 60-second vlog script for a Brazilian expat trying a classic American backyard BBQ for the first time, reacting honestly and comparing it to a churrasco back home."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a 7-day Instagram content calendar for a travel creator documenting a solo budget trip through Northeast Brazil — covering destinations like Lençóis Maranhenses, Jericoacoara, and São Luís."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a YouTube video description for a video titled 'I Spent $50 a Day in São Paulo for a Week — Here's Exactly What I Ate, Saw, and Paid,' optimized for search with timestamps, keywords, and a strong CTA."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 5 Instagram caption ideas for a post about making pão de queijo from scratch at home in the USA, leaning into the nostalgia and comfort of cooking Brazilian food abroad."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a full 3-minute YouTube script for a video titled 'Why Freelance Video Editors Keep Undercharging — And the Exact Framework I Use to Price My Work,' aimed at mid-level editors ready to raise their rates confidently."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a shot list for a cinematic recipe video making moqueca baiana from scratch — designed for a YouTube audience unfamiliar with Brazilian cuisine, with shots that explain the dish culturally, not just culinarily."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 90-second 'Is It Worth It?' review script for the DJI Osmo Pocket 3 aimed at vloggers and travel creators who are deciding between it and bringing a full mirrorless camera setup on trips."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 6 YouTube title ideas for a video about eating on a $30-a-day budget while traveling through Japan as a solo first-timer, balancing humor, curiosity, and search intent."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a full content repurposing strategy for a 25-minute YouTube documentary about the music of Tropicália — covering Caetano Veloso, Gilberto Gil, and Os Mutantes — built for a bilingual creator distributing across YouTube, Instagram, and TikTok."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a newsletter introduction for a creator-focused finance newsletter about how to build a 6-month emergency fund as a freelance video editor with irregular income — practical, non-preachy, written in a voice that respects the reader's intelligence."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 5 TikTok hook lines for videos about quick, affordable weeknight dinner recipes inspired by Brazilian home cooking — written for a US-based audience that may be discovering these flavors for the first time."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 60-second script for an Instagram Reel about the real, hidden cost of traveling internationally as a video creator — covering gear insurance, checked baggage fees, data plans, and the gear anxiety no one talks about."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a week-long content calendar for a lifestyle creator documenting what it actually feels like to move from Brazil to the United States — blending practical immigrant tips, cultural observation, and emotional honesty across Instagram, TikTok, and YouTube Shorts."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a detailed 4-minute YouTube script for a video titled 'How AI Is Changing the Freelance Video Editing Market Right Now — And What to Do About It,' aimed at working editors in their 30s and 40s who are concerned but not panicking."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 60-second script for a YouTube Shorts video titled 'My Honest Morning Routine as a Freelance Video Editor Working From Home' — calm, real, and unglamorous, showing the actual rhythm of a creative workday morning."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate a 6-post Instagram content plan for a music-focused creator launching a series explaining the harmonic and emotional architecture of Bossa Nova — written for an audience that loves music but doesn't read sheet music."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a comprehensive content strategy document for a bilingual (Portuguese/English) YouTube channel that covers Brazilian cinema history — from Cinema Novo and Glauber Rocha through City of God and The Central Station — targeting both Brazilian diaspora viewers and international cinephiles discovering Brazilian film for the first time."
   }
 ]
