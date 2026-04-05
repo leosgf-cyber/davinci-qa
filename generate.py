@@ -25,7 +25,7 @@ ARCHIVE.mkdir(exist_ok=True)
 # ── Config ────────────────────────────────────────────────────────────────────
 MODEL             = "claude-sonnet-4-6"
 MAX_HISTORY       = 500
-QUESTIONS_PER_DAY = 50
+QUESTIONS_PER_DAY = 75
 DIFFICULTY_DIST   = "30% Beginner, 50% Intermediate, 20% Advanced"
 
 # 4 categories with exact daily counts (total = 50)
@@ -34,6 +34,7 @@ CATEGORIES = {
     "B": {"label": "Tech — Gear",     "count": 7},
     "C": {"label": "Creative",        "count": 18},
     "D": {"label": "Content",         "count": 17},
+    "E": {"label": "Music Theory",    "count": 25},
 }
 
 # Badge colors per type
@@ -42,6 +43,7 @@ TYPE_COLOR = {
     "Tech — Gear":     ("#2a2010", "#FFD54F"),   # gold
     "Creative":        ("#2a1a2a", "#CE93D8"),   # purple
     "Content":         ("#1a2a1a", "#A5D6A7"),   # green
+    "Music Theory":    ("#2a1a10", "#FFAB76"),   # orange
 }
 
 LEO_PROFILE = """
@@ -152,6 +154,29 @@ TOPICS TO COVER (mix these):
 - Style mimicry: "How would you recreate the visual language of [specific film or creator]?"
 
 {reddit_ctx}"""
+
+    elif cat_key == "E":
+        focus = f"""Generate exactly {count} prompts in the category "Music Theory".
+These are practical questions about music theory for musicians, producers, and curious learners.
+NO classical or erudite music theory — keep everything grounded in popular music contexts.
+
+TOPICS TO COVER (mix these):
+- Functional harmony: chord progressions, tension and resolution, ii-V-I, IV-I, tritone substitutions
+- Circle of fifths: how to use it practically, key relationships, modulation
+- Scales: major, minor (natural/harmonic/melodic), pentatonic, blues scale — how and when to use each
+- Greek modes: Dorian, Phrygian, Lydian, Mixolydian, Locrian — what they sound like and where you hear them in real songs
+- Intervals: how to hear them, how they create emotion, consonance vs dissonance
+- Chord construction: triads, 7th chords, extensions (9, 11, 13), sus chords, borrowed chords
+- Rhythm and groove: syncopation, polyrhythm, feel differences between genres
+- Practical application: how theory shows up in Rock, MPB, Bossa Nova, Pagode, Jazz, Funk, Samba
+- Ear training: how to develop relative pitch, recognize chord qualities, transcribe by ear
+- Songwriting with theory: how to use theory to write better hooks, bridges, chord changes
+
+IMPORTANT: Always connect theory to real examples from popular music.
+Good reference points (use when relevant): Beatles, Radiohead, Caetano Veloso, João Gilberto, Hermeto Pascoal,
+Cazuza, Legião Urbana, Chico Buarque, Bill Evans, Stevie Wonder, Steely Dan, Kendrick Lamar.
+
+QUESTION TYPES (mix): How-to, What is / explain, Why does this sound like X, How do I apply this, What's the difference between"""
 
     else:  # D
         focus = f"""Generate exactly {count} prompts in the category "Content".
@@ -272,7 +297,7 @@ def render_html(questions: list[dict], today: date) -> str:
     today_str = today.strftime("%B %d, %Y")
     today_iso = today.isoformat()
     total     = len(questions)
-    types     = ["Tech — Software", "Tech — Gear", "Creative", "Content"]
+    types     = ["Tech — Software", "Tech — Gear", "Creative", "Content", "Music Theory"]
     diffs     = ["beginner", "intermediate", "advanced"]
 
     counts_diff = {d: sum(1 for q in questions if q["difficulty"] == d) for d in diffs}
@@ -407,6 +432,7 @@ def render_html(questions: list[dict], today: date) -> str:
     <div class="stat"><span class="stat-num">{counts_type.get("Tech — Gear",0)}</span><span class="stat-label">Tech Gear</span></div>
     <div class="stat"><span class="stat-num">{counts_type.get("Creative",0)}</span><span class="stat-label">Creative</span></div>
     <div class="stat"><span class="stat-num">{counts_type.get("Content",0)}</span><span class="stat-label">Content</span></div>
+    <div class="stat"><span class="stat-num">{counts_type.get("Music Theory",0)}</span><span class="stat-label">Music</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["beginner"]}</span><span class="stat-label">Beginner</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["intermediate"]}</span><span class="stat-label">Intermed.</span></div>
     <div class="stat"><span class="stat-num">{counts_diff["advanced"]}</span><span class="stat-label">Advanced</span></div>
