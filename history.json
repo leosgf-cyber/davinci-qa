@@ -1298,5 +1298,365 @@
   {
     "date": "2026-04-05",
     "question": "What is spectral harmony — the approach used by composers who build chords from the natural overtone series rather than traditional stacked thirds — and is there any meaningful overlap between spectral thinking and the way Jobim or Hermeto Pascoal voiced their most unusual chords?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You just finished your first edit in DaVinci Resolve and hit Export — but the video comes out with a green tint and the colors look nothing like what you saw on the timeline. What went wrong, and how do you fix it?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Everyone talks about proxy workflows like they're obviously worth it — but is setting up proxies in Premiere Pro actually the right move for a solo creator editing 4K on a mid-range laptop, or is there a smarter workaround that skips the extra steps entirely?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Resolve's Fusion versus After Effects — which one actually wins for a video editor who wants motion graphics without living inside expressions and node math all day?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is the actual difference between H.264 and ProRes — and when does that difference matter enough to change how you shoot, store, and edit your footage?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're cutting a multicam interview in Premiere Pro — three angles, one guest, 45 minutes of raw footage — and the sync keeps drifting after the first 10 minutes. How do you diagnose and fix it without manually nudging every cut?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You've been building flat node trees in DaVinci Resolve for two years — one node for exposure, one for color, one for curves. It works, but you know it's not how colorists actually think. What does a professionally structured node workflow actually look like, and why does the architecture matter beyond personal preference?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "CapCut is everywhere right now — every travel creator, every food video, every transition reel. Is it actually a serious editing tool for someone who wants to build a professional workflow, or is it a shortcut that puts a ceiling on your growth?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "After Effects expressions feel like a wall most editors never climb — but there are four or five expressions that, once you understand them, cover 80% of what motion designers actually use them for. What are they, how do they work, and is there a way to learn expression logic without feeling like you're learning JavaScript?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You just bought your first mirrorless camera and every YouTube tutorial tells you to shoot in Manual mode — but is that actually the right starting point, or is there a smarter way to learn exposure without drowning in three dials at once?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Everyone recommends the 85mm f/1.8 for portraits — but shooting in tight São Paulo apartments or cramped NYC studio spaces makes that focal length nearly useless. What lens actually wins for environmental portraits when you can't back up more than 6 feet?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Your Premiere Pro timeline is choking on 4K Sony XAVC-S footage — proxy workflow takes forever to set up and you're losing hours per project. Walk me through the fastest proxy pipeline that actually works in 2026, from ingest to delivery."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Misconception worth busting: autofocus is always slower and less reliable than manual focus for cinematic video work. When is Sony's Real-Time Tracking AF on the FX30 or A7S III actually the more precise creative tool — not just the lazier one?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You want to build a video editing PC in 2026 for under $1,500 that can actually handle 4K footage without melting. What does that build look like — specific parts, current prices, and the one component most beginners get wrong?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Is the Sony FX30 still the smartest buy for a solo Brazilian videomaker shooting hybrid photo-video work in the USA in April 2026 — or has the market shifted enough that the Fujifilm X-S20 or Canon R10 II deserve a real look at their current price points?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're shooting a run-and-gun wedding with one body, one prime, available light only — church ceremony at ISO 12800, outdoor golden hour portraits, dark reception. Design the complete shutter speed, aperture, and ISO strategy that keeps you covered across all three scenarios without a single settings fumble mid-shoot."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You want to shoot something visually interesting this weekend but you have no concept, no crew, and no location scouted. What's the simplest framework for turning a single ordinary object — a glass of water, a ceiling fan, a pair of hands — into a complete visual story in under 60 seconds?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What are the best films, photo books, and YouTube channels to consume right now if you're a beginner trying to build a visual vocabulary — not just technical skills — from scratch? Give a real starter curriculum, not a generic list."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Kodachrome, Portra 400, Fuji Velvia — these film stocks have devoted followings decades after digital replaced them. What actually makes each one visually distinct, and how do you chase those specific qualities in a digital grade without just slapping a preset on your footage?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "VHS isn't just a look — it's a feeling of time collapsing, of memory becoming unreliable. How do you use VHS aesthetics deliberately as a narrative device rather than nostalgic decoration, and what separates creators who do it well from those who are just running a filter?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Day-for-night grading has a long cinematic history — from classic Hollywood to spaghetti westerns to modern music videos. Walk through how to build a convincing day-for-night look in DaVinci Resolve that doesn't just look like a dark, blue-tinted disaster."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What's actually worth shooting in New Orleans right now — not the French Quarter Instagram bait, not the Mardi Gras clichés, but the visual layers of the city that reward a creator who stays long enough to see past the surface? What would a serious short documentary find there?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Describe the visual grammar of Cinema Novo — Glauber Rocha's handheld delirium, the harsh northeastern light, the refusal of classical composition — and make the case for why its aesthetic strategies are more relevant to low-budget independent filmmakers today than most contemporary influences they're actually citing."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The muted, desaturated grade is everywhere — every travel creator, every wedding film, every lifestyle brand is living in the same grey-beige visual register. Make the case for shooting and grading fully saturated imagery in 2025. When does color intensity become the honest choice rather than the showy one?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "How would you recreate the visual language of Walter Salles — the dusty horizontal landscapes of 'Central do Brasil,' the road as psychological space, the way his films frame human smallness against vast geography — as a practical method for shooting documentary-inflected fiction on a limited budget?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Everyone is chasing the 'cinematic' look — but what does that word actually mean technically? Break down the five specific visual properties that separate footage that reads as cinematic from footage that reads as video, and explain which ones are actually achievable without a cinema camera."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What's trending right now in visual storytelling on YouTube — not the thumbnail-bait formats, but the longer-form visual essay and documentary styles that are building genuine audiences in 2025? Which of those formats have real creative legs and which are already calcifying into formulas?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Fernando Meirelles shot 'City of God' with a visual language that felt like the city itself was generating the style — the handheld chaos, the color grading by César Charlone, the editing rhythm that matched the favela's tempo. How do you reverse-engineer that relationship between place, story, and visual form so the style genuinely emerges from the subject rather than being applied to it?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "35mm grain is not one thing — a Tri-X pushed two stops looks nothing like a Porta 400 at box speed, which looks nothing like Vision3 500T in a tungsten interior. How do you build a grain system in your post workflow that is stock-specific, scene-responsive, and actually adds photographic truth rather than just texture noise?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're building the visual language for a feature-length documentary about a Brazilian immigrant community in a mid-sized American city — not New York, not LA, somewhere genuinely between cultures and between attention. How do you design a cinematographic strategy that makes the invisibility of the community itself into a visual argument?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You've been shooting everything wide because it feels 'cinematic' and safe. What happens when you force yourself to shoot an entire project with a 50mm — and why do working cinematographers call the 50mm the most honest and the most difficult focal length at the same time?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What are the three or four specific visual habits that immediately reveal that a creator is a beginner — not because they're making technical errors, but because they're making compositional and perceptual errors that come from not yet knowing how to see? And how do you actually fix them?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What does it actually mean to study light the way a cinematographer studies it — not exposure settings, not three-point lighting diagrams, but the quality, direction, color temperature, and emotional register of available light in a specific place at a specific hour? How do you build that literacy?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The TikTok vertical format is not just a cropped horizontal — it has its own compositional logic, its own relationship to the human body, its own rhythm of attention. How do you design a visual language for vertical video that is genuinely native to the format rather than a letterboxed compromise — and which filmmakers' instincts translate most naturally into that vertical space?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 60-second script for a YouTube Short titled 'The One Budgeting Rule That Actually Works for Freelancers' — aimed at creators who have inconsistent monthly income and have never successfully stuck to a budget before."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a shot list for a 4-minute YouTube video about a São Paulo street food vendor — designed to feel like a mini-documentary, not a food vlog. The video should make the viewer care about the person before they care about the food."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 6 Instagram caption ideas for a post about arriving in a new American city as a Brazilian immigrant — that specific day-one feeling of exhaustion, wonder, and the disorienting realization that nothing is where you expected it to be."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 5 YouTube title ideas for a beginner-friendly video about how to eat extraordinarily well in any new city for under $30 a day — using the local market, one good grocery run, and exactly one splurge meal as your structure."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a YouTube video description for a video titled 'I Spent 5 Days Eating Only at Brazilian Restaurants in Los Angeles — Here's What That Taught Me About How America Sees Brazil,' optimized for search, with 3 target keywords, a timestamp structure, and a CTA that feels like a real person wrote it."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Build a complete content repurposing strategy for a 20-minute YouTube documentary about the hidden Italian and Japanese immigrant communities in São Paulo — covering how to extract value across YouTube, Instagram, TikTok, newsletter, and a potential podcast clip without losing the documentary's emotional integrity on shorter formats."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a week-long content calendar for a finance creator focused on the specific financial anxiety of freelance video editors in their first year — covering underpricing, tax surprises, gear temptation, and the psychological weight of invoice silence. Map content across Instagram, TikTok, and one YouTube video."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 90-second 'Is It Worth It?' script for the DJI Osmo Mobile 7 aimed at food and travel creators who shoot everything on their phone and are tired of shaky footage but deeply skeptical of buying yet another piece of gear."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a 2-minute YouTube script for a video titled 'Why Every Creator I Know Is Burned Out Right Now — And What the Algorithm Actually Has to Do With It,' aimed at mid-level creators who've been posting consistently for 2+ years and feel the exhaustion but can't name exactly why."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a detailed creative brief for a 5-part YouTube series called 'The Invisible Table' — about how immigrant cuisines in America get simplified, exoticized, or erased, with each episode focused on a different community: Brazilian, Japanese, Ethiopian, Mexican, and Lebanese — designed to work as long-form essays, not travel food content."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Generate 5 Instagram caption ideas for a Reel showing a brutally honest morning routine — no aesthetically pleasing latte art, no golden-hour workout, just the actual 7am of a freelance editor: cold coffee, revision requests in the inbox, three screens, and the specific loneliness of working alone."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a packing list content piece — formatted as an Instagram carousel — for a first-time solo traveler doing 10 days in Colombia: Bogotá, Medellín, and Cartagena back to back, one carry-on only, shooting video the whole time."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a comprehensive content brief for a YouTube essay — 10 to 15 minutes — arguing that AI-assisted video editing is not killing the editor's job but is exposing which editors were never really doing creative work in the first place. The essay should be uncomfortable for some of its audience and honest about what that means."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Create a 4-post Twitter/X thread content plan for a creator launching a discussion about whether the 'learn in public' trend has become performative — where creators document growth not to share knowledge but to build audience, and the two goals are now quietly in conflict."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a YouTube video description for a beginner-friendly video titled 'How I Set Up My Entire Video Editing Workspace for Under $400 — Real Prices, Real Gear, No Sponsors,' including 3 target keywords, chapter timestamps, and a CTA section that sounds like a human being."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Write a newsletter introduction — 250 words maximum — for a weekly email called 'Frame Rate' aimed at freelance video creators: this week's issue is about the specific financial and creative cost of saying yes to a client whose vision you fundamentally disagree with, and whether the money is ever actually worth it."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Build a 6-episode YouTube series outline called 'What the Algorithm Buried' — each episode resurrecting a genuinely important piece of Brazilian cultural production from the last 30 years that never traveled internationally: one film, one album, one TV series, one visual artist, one book, and one political event — with each episode arguing why the work matters now and what American or global audiences lost by never encountering it."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "I keep hearing musicians talk about 'the key' of a song, but I'm not sure I actually understand what it means beyond 'the note it starts on.' What is a key, really — and how does knowing the key change how you play or write music?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What actually makes a chord 'major' or 'minor' — and why does that one difference between them feel so emotionally loaded? Why does minor feel sad and major feel happy, and is that cultural conditioning or is there something physical happening in the sound?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're sitting with a guitar, you know open chords, and someone says 'this song is in the key of D.' What does that tell you — specifically — about which chords will probably appear, which notes to solo over, and where the song wants to go harmonically?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is syncopation — and why does it make music feel alive in a way that straight, on-the-beat rhythm never quite does? Break it down using examples from funk, samba, and rock so it actually clicks."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Everyone says to 'learn your pentatonic scale' as the first step to soloing — but nobody explains why the pentatonic works over so many different chord progressions without clashing. What's actually happening harmonically that makes it so forgiving?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The ii-V-I is the most important chord progression in jazz — but it shows up in MPB, bossa nova, and even pop music constantly. Why does it work so well, what is each chord doing functionally, and how do you hear it in songs by João Gilberto or Bill Evans?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Modal interchange — borrowing chords from parallel modes — is one of the most emotionally powerful tools in popular music. But most explanations stay abstract. How does it actually show up in Caetano Veloso's harmonic language, and what makes borrowed chords feel right rather than random?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Legião Urbana's 'Monte Castelo' opens with a piano introduction that feels simultaneously classical and emotionally devastating. What is Renato Russo doing harmonically in that opening — and how does understanding it change how you hear the rest of the song?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is a tritone substitution — and why does swapping a dominant seventh chord for the chord a tritone away actually work, both acoustically and in practice? Where do you hear tritone subs in jazz, MPB, and even in pop production?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Mixolydian mode is everywhere in rock and MPB — it's in 'Norwegian Wood,' it's in a lot of Gilberto Gil, it's in funk. But most musicians use it instinctively without knowing why it sounds the way it does. What exactly makes Mixolydian feel different from major, and how do you use it deliberately?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Suspended chords — sus2 and sus4 — appear constantly in rock, pop, and Brazilian music, often at moments of maximum emotional openness. What are they harmonically, why do they feel unresolved and beautiful at the same time, and how do you use them structurally rather than decoratively?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're producing a track in a minor key and it's starting to feel heavy and one-dimensional. What are the specific harmonic moves — borrowed chords, mode mixture, secondary dominants — that introduce light without abandoning the minor tonality, and which Brazilian or rock artists use this most effectively?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The Dorian mode sits between natural minor and Mixolydian emotionally — it's minor but with a raised sixth that gives it a particular brightness. Why does Dorian feel like the 'cool' minor, and why do jazz, funk, soul, and MPB all keep returning to it?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Voice leading is the invisible architecture underneath great chord progressions — it's why a Bill Evans voicing feels inevitable and a clumsy chord change feels jarring even when the chords themselves are correct. What is voice leading, and how do you start applying it to your own playing and writing?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Why does the Lydian mode feel the way it does — that floating, slightly unreal, almost science-fiction quality that film composers love and that Joe Satriani built a career on? What is the raised fourth actually doing to the harmonic landscape, and how do you use it without it becoming a cliché?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Secondary dominant chords — the V of V, the V of IV, the V of VI — are responsible for some of the most emotionally satisfying moments in popular music. How do they work, and where do you hear them in Stevie Wonder, MPB, and classic rock?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Hermeto Pascoal's harmony doesn't follow functional jazz conventions, doesn't stay modal, and doesn't align cleanly with Brazilian popular harmony either. Is there a theoretical framework that actually captures what he's doing — or is he genuinely operating outside any existing system, and what does that mean for how you learn from him?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Coltrane's 'Giant Steps' cycle divides the octave into three equal parts — major thirds — creating a harmonic system where traditional tonal gravity barely functions. Is there an intuitive way to actually hear and understand what he was doing, beyond memorizing the substitution pattern?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Reharmonization is not just adding extensions or substituting chords — at its best, it reinterprets the emotional meaning of a melody by changing what the harmony implies about each note. How do you reharmonize 'Garota de Ipanema' in a way that feels revelatory rather than academic?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The relationship between samba's rhythmic structure and its harmonic rhythm is something most non-Brazilian musicians get wrong — they play the right chords but in the wrong rhythmic position relative to the clave, and the whole thing stiffens. What is the correct relationship, and how do you internalize it?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Spectral harmony — building chords from the natural overtone series rather than stacked thirds — feels distant from pop and MPB. But is there a meaningful overlap between spectral thinking and the way Jobim or Hermeto Pascoal voiced their most unusual and beautiful chords?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Radiohead's harmonic language is built on a specific kind of tonal ambiguity — progressions that imply a key without confirming it, modal moves that refuse to resolve, borrowed chords that never return home. What is the theoretical architecture behind songs like 'Exit Music' or 'How to Disappear Completely,' and how is Thom Yorke using harmony to create psychological unease?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "What is the circle of fifths — not the diagram, but the actual musical logic behind it — and how does a working musician use it to find related keys, predict chord changes, and understand why some keys feel 'close' and others feel 'far away'?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "The Phrygian mode has a very specific personality — dark, tense, slightly Spanish or Middle Eastern — and it shows up in heavy metal, flamenco, and in moments of harmonic menace in film scores. What is Phrygian actually doing acoustically, and how do you use it as a tonal center rather than just a scale to run over a chord?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Chord extensions — ninths, elevenths, thirteenths — are what separate a basic triad from the lush, complex sound of jazz, bossa nova, and Stevie Wonder. But adding extensions randomly makes things muddy. What is the logic behind which extensions to add, when, and how to voice them so they enhance rather than cloud the harmony?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "An American student keeps mixing up 'por' and 'para' even after 3 months of classes. What's your single go-to explanation that actually makes it click — not the grammar rule, but the image or metaphor you use?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're explaining to a beginner American student why Brazilians say 'tô' instead of 'estou' — and you can see in their face they're worried this means everything they've learned is wrong. How do you reframe reduction as a feature, not a bug, without overwhelming them?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "A new American student asks you point-blank: 'Should I learn Brazilian Portuguese or European Portuguese?' They have no travel plans yet. What do you actually tell them — and what do you NOT say?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're creating a 60-second Reel explaining why Brazilian Portuguese sounds so different from European Portuguese. What's your hook, your one killer audio example, and the cultural detail that makes people actually care — not just linguistically curious?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "An American student asks why Brazilians use diminutives so constantly — 'cafezinho,' 'beijinho,' 'rapidinho' — and whether they actually change the meaning or are just filler. How do you explain that diminutives in Brazilian Portuguese carry emotional warmth, not just smallness?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "After 5 years living in the US, you catch yourself reaching for an English word mid-Portuguese sentence — not because you forgot the Portuguese, but because the English word fits the American context better. Is that language loss, code-switching, or something else entirely?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You want to teach the concept of 'jeitinho brasileiro' to an American class — but every time you try, it comes out sounding either like 'Brazilians bend the rules' or like a tourist brochure. How do you teach 'jeitinho' honestly, through language examples, without flattening it?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Your American students consistently struggle with the subjunctive — not just conjugating it, but knowing when to use it. Meanwhile, you use it instinctively in Portuguese and Spanish has trained some of them badly. What's your sequence for teaching it that doesn't start with 'the subjunctive expresses doubt or uncertainty'?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You've noticed that American students who also speak Spanish tend to plateau faster in Portuguese — they get comfortable with 60% accuracy and stop pushing because communication still works. How do you break the 'close enough' ceiling for Spanish-Portuguese bilinguals?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Build a content series concept for Instagram or TikTok — 8 to 10 posts — where each episode uses a single Brazilian song lyric to teach one real grammar point. Which songs do you use, which grammar points do they unlock, and why does music make this work when textbooks don't?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're teaching an advanced American student who reads Brazilian Portuguese fluently, watches films without subtitles, but sounds unmistakably American when they speak — the prosody is off in a way that grammar correction can't fix. What do you actually do with accent at this stage?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "Provocative position: most Brazilian Portuguese teachers in the US are teaching a version of the language that doesn't actually exist in Brazil anymore — formal, textbook-clean, undialected. Make the case for why teaching spoken registers and regional variation from day one is more ethical than waiting for 'advanced' level."
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're living in the US and teaching Portuguese to Americans while your own relationship to Brazilian Portuguese is quietly shifting — you dream in both languages, you joke differently in each one, you feel a different version of yourself in each. How do you turn that lived bilingual experience into actual teaching material rather than just personal content?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "A student in their second week asks: 'Why do Brazilians say 'saudade' if there's no English word for it — does that mean English speakers can't feel it?' How do you answer that in a way that teaches both vocabulary AND something true about how language and emotion actually work?"
+  },
+  {
+    "date": "2026-04-05",
+    "question": "You're 41, you've been speaking English daily for years, and you notice your American students learn pronunciation faster when you demonstrate your own accent journey — the mistakes, the overcorrections, the moments English phonology bled into your Portuguese. How do you use your own imperfection as a teaching tool without undermining your authority?"
   }
 ]
