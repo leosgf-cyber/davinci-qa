@@ -44,6 +44,16 @@ TYPE_COLOR = {
     "Content":         ("#1a2a1a", "#A5D6A7"),   # green
 }
 
+LEO_PROFILE = """
+USER PROFILE — use this to make prompts more relevant and personally resonant:
+- Brazilian videomaker and video editor living in the USA, 41 years old
+- Strong Hollywood references AND Brazilian cinema (Cinema Novo, Glauber Rocha, Fernando Meirelles, Walter Salles, etc.)
+- Deep knowledge of music theory and functional harmony
+- Music taste: Rock, MPB, Bossa Nova, Pagode — references like Caetano Veloso, Gilberto Gil, Cazuza, Legião Urbana are welcome
+- Can engage with politics and AI topics at an informed level
+- Creative and Content prompts should occasionally draw on Brazilian cultural references, bilingual perspectives, or the immigrant/expat experience when relevant — but don't force it every time
+"""
+
 REDDIT_SUBREDDITS = [
     "videography", "photography", "Filmmakers",
     "travel", "solotravel", "personalfinance",
@@ -170,17 +180,23 @@ DIFFICULTY DISTRIBUTION: {DIFFICULTY_DIST}
 
 AVOID repeating questions similar to these recent ones:{recent_str}
 
-ANSWER REQUIREMENTS:
-- 3–5 sentences per answer
-- Be precise: name specific tools, menu paths, settings, values, or techniques
-- Explain WHY the approach works, not just WHAT to do
-- End with one practical gotcha, common mistake, or pro tip
-- No bullet points — flowing, authoritative paragraph
-- For Content category: the answer should BE the deliverable (write the actual script/list/calendar), not describe how to make one
+{LEO_PROFILE}
+
+FOLLOW-UP REQUIREMENTS:
+- Generate exactly 4 follow-up prompts per question
+- Each follow-up must be a standalone, copyable prompt that deepens or expands the original question
+- Vary the angle across the 4: one more technical, one more creative, one more practical, one more conceptual
+- Max 30 words each — concise and direct
+- No answers — just the follow-up prompts themselves
 
 OUTPUT FORMAT — respond ONLY with a valid JSON array, no markdown fences, no explanation:
 [
-  {{"type": "{label}", "difficulty": "beginner|intermediate|advanced", "question": "...", "answer": "..."}},
+  {{
+    "type": "{label}",
+    "difficulty": "beginner|intermediate|advanced",
+    "question": "...",
+    "followups": ["follow-up 1", "follow-up 2", "follow-up 3", "follow-up 4"]
+  }},
   ...
 ]"""
 
@@ -218,11 +234,13 @@ def _call_api(client: anthropic.Anthropic, prompt: str) -> list[dict]:
     valid = []
     for q in items:
         if isinstance(q, dict) and "question" in q and "type" in q:
+            raw_fu = q.get("followups", [])
+            followups = [str(f).strip() for f in raw_fu[:4]] if isinstance(raw_fu, list) else []
             valid.append({
                 "type":       str(q.get("type", "Content")).strip(),
                 "difficulty": str(q.get("difficulty", "intermediate")).strip().lower(),
                 "question":   str(q["question"]).strip(),
-                "answer":     str(q.get("answer", "")).strip(),
+                "followups":  followups,
             })
     return valid
 
@@ -275,8 +293,19 @@ def render_html(questions: list[dict], today: date) -> str:
         diff  = q["difficulty"]
         bg, color = TYPE_COLOR.get(qtype, ("#1a1d27", "#aaa"))
         type_esc = qtype.replace('"', '&quot;')
-        q_esc    = q["question"].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
-        ans_esc  = q["answer"].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        q_esc = q["question"].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+
+        fu_cards = ""
+        for fu in q.get("followups", []):
+            fu_esc = fu.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+            fu_cards += f'''  <div class="followup-card">
+    <p class="followup-text" data-raw="{fu_esc}">{fu_esc}</p>
+    <button class="copy-fu-btn" onclick="copyFU(this)" title="Copy follow-up">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>Copy
+    </button>
+  </div>\n'''
 
         cards.append(f'''<div class="card" data-type="{type_esc}" data-diff="{diff}">
   <div class="card-header">
@@ -291,14 +320,13 @@ def render_html(questions: list[dict], today: date) -> str:
     </button>
   </div>
   <p class="q-text" data-raw="{q_esc}">{q_esc}</p>
-  <button class="show-ans-btn" onclick="toggleAnswer(this)">
+  <button class="show-fu-btn" onclick="toggleFollowups(this)">
     <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-    Show Answer
+    Show Follow-ups
   </button>
-  <div class="answer-box">
-    <div class="answer-label">Reference Answer</div>
-    <p class="answer-text">{ans_esc}</p>
-  </div>
+  <div class="followups-box">
+    <div class="followups-label">Follow-up Prompts</div>
+{fu_cards}  </div>
 </div>''')
 
     cards_html = "\n".join(cards)
@@ -350,15 +378,19 @@ def render_html(questions: list[dict], today: date) -> str:
   .copy-btn:hover {{ border-color:var(--accent2); color:var(--accent2); }}
   .copy-btn.copied {{ border-color:#4CAF50; color:#4CAF50; }}
   .q-text {{ color:var(--text); font-size:.93rem; line-height:1.55; }}
-  .show-ans-btn {{ background:transparent; border:1px solid var(--border); border-radius:6px; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:5px; font-size:.78rem; padding:5px 10px; transition:all .18s; width:fit-content; }}
-  .show-ans-btn:hover {{ border-color:var(--accent); color:var(--accent); }}
-  .show-ans-btn.open {{ border-color:var(--accent); color:var(--accent); }}
-  .show-ans-btn.open .chevron {{ transform:rotate(180deg); }}
+  .show-fu-btn {{ background:transparent; border:1px solid var(--border); border-radius:6px; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:5px; font-size:.78rem; padding:5px 10px; transition:all .18s; width:fit-content; }}
+  .show-fu-btn:hover {{ border-color:var(--accent); color:var(--accent); }}
+  .show-fu-btn.open {{ border-color:var(--accent); color:var(--accent); }}
+  .show-fu-btn.open .chevron {{ transform:rotate(180deg); }}
   .chevron {{ transition:transform .2s; }}
-  .answer-box {{ display:none; background:rgba(124,106,247,.07); border:1px solid rgba(124,106,247,.2); border-radius:8px; padding:12px 14px; margin-top:2px; }}
-  .answer-box.open {{ display:block; }}
-  .answer-label {{ font-size:.68rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.6px; margin-bottom:6px; }}
-  .answer-text {{ color:#c5c9e0; font-size:.88rem; line-height:1.65; white-space:pre-line; }}
+  .followups-box {{ display:none; flex-direction:column; gap:8px; margin-top:2px; }}
+  .followups-box.open {{ display:flex; }}
+  .followups-label {{ font-size:.68rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.6px; }}
+  .followup-card {{ background:rgba(79,195,247,.07); border:1px solid rgba(79,195,247,.2); border-radius:6px; padding:10px 12px; display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }}
+  .followup-text {{ color:#c5c9e0; font-size:.86rem; line-height:1.55; flex:1; }}
+  .copy-fu-btn {{ background:transparent; border:1px solid rgba(79,195,247,.3); border-radius:5px; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:3px; font-size:.72rem; padding:3px 7px; transition:all .18s; white-space:nowrap; flex-shrink:0; }}
+  .copy-fu-btn:hover {{ border-color:var(--accent2); color:var(--accent2); }}
+  .copy-fu-btn.copied {{ border-color:#4CAF50; color:#4CAF50; }}
   .empty {{ grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--muted); }}
   .empty .emoji {{ font-size:2.5rem; margin-bottom:12px; }}
   footer {{ text-align:center; color:var(--muted); font-size:.78rem; margin-top:40px; padding:0 16px; line-height:1.6; }}
@@ -440,13 +472,30 @@ def render_html(questions: list[dict], today: date) -> str:
     document.getElementById('visible-count').textContent = visible;
     document.getElementById('empty-state').classList.toggle('hidden', visible > 0);
   }}
-  function toggleAnswer(btn) {{
-    const box  = btn.closest('.card').querySelector('.answer-box');
+  function toggleFollowups(btn) {{
+    const box  = btn.closest('.card').querySelector('.followups-box');
     const open = box.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.innerHTML = open
-      ? `<svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><polyline points="6 9 12 15 18 9"/></svg> Hide Answer`
-      : `<svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg> Show Answer`;
+      ? `<svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transform:rotate(180deg)"><polyline points="6 9 12 15 18 9"/></svg> Hide Follow-ups`
+      : `<svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg> Show Follow-ups`;
+  }}
+  function copyFU(btn) {{
+    const text = btn.closest('.followup-card').querySelector('.followup-text').dataset.raw;
+    navigator.clipboard.writeText(text).then(() => {{
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ✓`;
+      setTimeout(() => {{
+        btn.classList.remove('copied');
+        btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy`;
+      }}, 1800);
+    }}).catch(() => {{
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      btn.classList.add('copied'); btn.textContent = '✓';
+      setTimeout(() => {{ btn.classList.remove('copied'); btn.textContent = 'Copy'; }}, 1800);
+    }});
   }}
   function copyQ(btn) {{
     const text = btn.closest('.card').querySelector('.q-text').dataset.raw;
